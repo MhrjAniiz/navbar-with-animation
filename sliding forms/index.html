@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="info-image" id="info-image">
+        <p class="askLogin" id="askLogin">Already have an account ?</p>
+        <img src="luffy2.jpg" class="luffy" alt="picture" />
+        <button class="redirect" onClick="changeScreen()" id="changeScreen">
+          Log In
+        </button>
+      </div>
+      <div class="signup" id="signup">
+        <h1>Sign Up</h1>
+        <form action="" class="signupform">
+          <label for="fname"> First Name: </label>
+          <input type="text" name="fname" />
+
+          <label for="lname">Last Name:</label>
+          <input type="text " name="lname" />
+          <label for="email">Email</label>
+          <input type="email" name="email" />
+          <label for="password">password</label>
+          <input type="password" name="password" id="checkbox" />
+          <label for="checkbox">
+            <input type="checkbox" onClick="showPassword()" /> show
+            password</label
+          >
+          <button>Sign Up</button>
+        </form>
+      </div>
+
+      <div class="login" id="login">
+        <h1>Login</h1>
+        <form action="" class="loginform">
+          <label for="email">Email</label>
+          <input type="email" name="email" />
+          <label for="password">password</label>
+          <input type="password" id="checkbox2" />
+          <label for="checkbox">
+            <input type="checkbox" onClick="showPassword()" />
+            show password</label
+          >
+          <button>Login</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function showPassword() {
+        var checked = document.getElementById("checkbox");
+        var checked2 = document.getElementById("checkbox2");
+        if (checked.type === "password") {
+          checked.type = "text";
+        } else {
+          checked.type = "password";
+        }
+
+        if (checked2.type === "password") {
+          checked2.type = "text";
+        } else {
+          checked2.type = "password";
+        }
+      }
+
+      function changeScreen() {
+        var imageDiv = document.getElementById("info-image");
+        var signUpDiv = document.getElementById("signup");
+        var loginDiv = document.getElementById("login");
+        var button = document.getElementById("changeScreen");
+        var askLogin = document.getElementById("askLogin");
+        if (button.innerText === "Log In") {
+          imageDiv.classList.remove("animationrev");
+          imageDiv.classList.add("animation");
+
+          setTimeout(function () {
+            loginDiv.style.width = "40vw";
+            button.innerText = "Sign Up";
+            askLogin.innerText = "Create an account !!";
+            imageDiv.style.left = "0";
+            signUpDiv.style.width = "30vw";
+          }, 1000);
+        }
+
+        if (button.innerText === "Sign Up") {
+          imageDiv.classList.remove("animation");
+          imageDiv.classList.add("animationrev");
+
+          setTimeout(function () {
+            signUpDiv.style.width = "50vw";
+            button.innerText = "Log In";
+            askLogin.innerText = "Already have an account ?";
+            imageDiv.style.left = "30vw";
+
+            loginDiv.style.width = "30vw";
+          }, 1000);
+        }
+      }
+    </script>
+  </body>
+</html>
